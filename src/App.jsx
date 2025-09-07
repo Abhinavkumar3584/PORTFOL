@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header.jsx';
+import RecentHighlightsSection from './components/RecentHighlightsSection.jsx';
 import Navbar from './components/Navbar.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import SkillsSection from './components/SkillsSection.jsx';
@@ -40,6 +41,11 @@ function App() {
               {/* Header Section */}
               <div id="header">
                 <Header />
+              </div>
+              
+              {/* Recent Highlights Section */}
+              <div id="recent-highlights">
+                <RecentHighlightsSection />
               </div>
               
               {/* Content Sections */}

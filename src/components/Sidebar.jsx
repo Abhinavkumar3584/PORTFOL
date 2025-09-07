@@ -65,12 +65,20 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-3xl backdrop-blur-md p-7 md:sticky md:top-4 h-auto w-full">
+    <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-3xl p-6 md:sticky md:top-4 h-auto w-full overflow-hidden">
+      {/* Radial Gradient Background from Bottom */}
+      <div
+        className="absolute inset-0 z-0 opacity-40 dark:opacity-30"
+        style={{
+          background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
+        }}
+      />
+      
       {/* Mobile layout (horizontal with right side stacked) */}
-      <div className="flex md:hidden items-center">
+      <div className="flex md:hidden items-center relative z-10">
         {/* Left side: Profile Image */}
         <div className="flex-shrink-0 mr-2">
-          <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
+          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
             <img 
               src={profileImage} 
               alt="Abhinav Kumar" 
@@ -80,7 +88,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
         </div>
         
         {/* Right side: Column with Open to Work badge, Social Media Icons and Resume Button */}
-        <div className="flex-grow flex flex-col justify-evenly h-40 py-2">
+        <div className="flex-grow flex flex-col justify-evenly h-32 py-2">
           {/* Open to Work Badge with Animation */}
           <div className="flex justify-center">
             <div className="relative px-3 py-1 rounded-3xl text-white text-sm font-medium bg-gradient-to-r from-purple-500 via-green-500 to-blue-600 bg-size-200 animate-gradient-x">
@@ -100,7 +108,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-9 h-9 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300`}
+                className={`w-9 h-9 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
                 aria-label={social.name}
               >
                 <div className="w-5 h-5">{social.icon}</div>
@@ -122,10 +130,10 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
       </div>
       
       {/* Desktop layout (vertical) */}
-      <div className="hidden md:block">
+      <div className="hidden md:block relative z-10">
         {/* Profile Image */}
-        <div className="flex justify-center mb-6">          
-          <div className="w-60 h-60 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
+        <div className="flex justify-center mb-4">          
+          <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
             <img 
               src={profileImage} 
               alt="Abhinav Kumar" 
@@ -135,9 +143,9 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
         </div>
         
         {/* Name */}
-        <div className="text-center mb-4">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Abhinav Kumar</h2>
-          <p className="text-green-500 dark:text-green-400 text-sm">Frontend Developer</p>
+        <div className="text-center mb-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-white drop-shadow-sm">Abhinav Kumar</h2>
+          <p className="text-green-500 dark:text-green-400 text-sm drop-shadow-sm font-medium">Frontend Developer</p>
         </div>
         
         {/* Open to Work Badge with Animation */}
@@ -158,7 +166,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-8 h-8 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300`}
+              className={`w-8 h-8 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
               aria-label={social.name}
             >
               <div className="w-4 h-4">{social.icon}</div>
@@ -167,13 +175,13 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
         </div>
 
         {/* Contact Information */}
-        <div className="mb-6 space-y-2">
-          <h3 className="text-center text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Contact</h3>
+        <div className="mb-4 space-y-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3">
+          <h3 className="text-center text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2 drop-shadow-sm">Contact</h3>
           {contactInfo.map((contact, index) => (
             <a
               key={index}
               href={contact.link}
-              className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-500 transition-colors duration-300"
+              className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-green-500 transition-colors duration-300 drop-shadow-sm"
             >
               <span className="text-green-500">{contact.icon}</span>
               <span>{contact.text}</span>

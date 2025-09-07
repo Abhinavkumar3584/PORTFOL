@@ -129,8 +129,16 @@ const Header = () => {
 
   return (
     <div className="relative bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-3xl p-4 md:p-8 overflow-hidden">
+      {/* Radial Gradient Background from Top */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #7c3aed 100%)",
+        }}
+      />
+      
       {/* Diagonal Line Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         <div className="absolute -inset-full h-[200%] w-[200%] rotate-45 translate-x-1/2 -translate-y-1/4">
           <div className="w-full h-1 bg-purple-500/10 transform -rotate-45 mb-20"></div>
           <div className="w-full h-1 bg-purple-500/10 transform -rotate-45 mb-40"></div>
@@ -139,27 +147,24 @@ const Header = () => {
       </div>
       
       {/* Introduction Text */}
-      <div className="text-gray-800 dark:text-gray-200 mb-6 md:mb-10 max-w-3xl mx-auto relative z-10">
+      <div className="text-gray-800 dark:text-white mb-6 md:mb-10 max-w-3xl mx-auto relative z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-4">
         <h1 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 flex flex-wrap items-center">
           <span className="mr-2 animate-waving-hand">👋</span>
           Hi, I'm <span className="ml-2 text-green-500 dark:text-green-400 animated-line">Abhinav Kumar</span>
         </h1>
         
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg">
+        <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-base md:text-lg">
           Hello! I'm Abhinav Kumar — <span className="text-green-500 dark:text-green-400">a creative technologist driven by innovation and purpose</span>.
           I blend technology, design, and data to craft solutions that make a difference. With a B.Tech in Information Technology and Mathematical Innovation from
           <span className="text-green-500 dark:text-green-400"> Cluster Innovation Centre, University of Delhi</span>, my work spans frontend development, AI-powered applications, data visualization, and user-centric design.
         </p>
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg mt-4">
-          I've built platforms that guide competitive exam aspirants, and explored AI in education and accessibility. Whether it's building a chatbot with NLP or designing seamless digital experiences, I'm passionate about turning ideas into impactful tools.
-        </p>
       </div>
       
       {/* INTERESTS Heading */}
-      <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 inline-block border-b-2 border-green-500 dark:border-green-400 pb-1 relative z-10">INTERESTS</h2>
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 inline-block border-b-2 border-green-500 dark:border-green-400 pb-1 relative z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg px-3 py-1">INTERESTS</h2>
       
       {/* Expertise Areas with Different Colors */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-3 relative z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-3 relative z-20">
         {expertise.map((item, index) => {
           // Extract color name from the text color class and make a darker version for border
           const colorBase = item.color.split('-')[1]; // e.g. "blue" from "text-blue-400"
@@ -168,12 +173,12 @@ const Header = () => {
           return (
             <div 
               key={index} 
-              className={`border-2 ${borderColorClass} rounded-3xl p-2 md:p-3 flex flex-col items-center text-center bg-gradient-to-br ${item.gradient} shadow-sm overflow-hidden`}
+              className={`border-2 ${borderColorClass} rounded-3xl p-2 md:p-3 flex flex-col items-center text-center bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
             >
-              <div className={`${item.color}`}>
+              <div className={`${item.color} drop-shadow-sm`}>
                 {item.icon}
               </div>
-              <div className={`text-xs mt-2 font-medium ${item.color}`}>
+              <div className={`text-xs mt-2 font-medium ${item.color} drop-shadow-sm`}>
                 {item.text}
               </div>
             </div>
