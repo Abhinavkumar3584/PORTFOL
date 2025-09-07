@@ -65,10 +65,10 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
   };
 
   return (
-    <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-3xl p-6 md:sticky md:top-4 h-auto w-full overflow-hidden">
+    <div className="relative bg-white/98 dark:bg-gray-900/98 md:bg-white/95 md:dark:bg-gray-900/95 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-3xl p-6 md:sticky md:top-4 h-auto w-full overflow-hidden shadow-lg">
       {/* Radial Gradient Background from Bottom */}
       <div
-        className="absolute inset-0 z-0 opacity-40 dark:opacity-30"
+        className="absolute inset-0 z-0 opacity-30 md:opacity-40 dark:opacity-20 md:dark:opacity-30"
         style={{
           background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
         }}
@@ -108,7 +108,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-9 h-9 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
+                className={`w-9 h-9 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/98 dark:bg-gray-900/98 md:bg-white/90 md:dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
                 aria-label={social.name}
               >
                 <div className="w-5 h-5">{social.icon}</div>
@@ -143,7 +143,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
         </div>
         
         {/* Name */}
-        <div className="text-center mb-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3">
+        <div className="text-center mb-3 bg-white/95 dark:bg-gray-900/95 md:bg-white/80 md:dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3 shadow-md">
           <h2 className="text-xl font-bold text-gray-800 dark:text-white drop-shadow-sm">Abhinav Kumar</h2>
           <p className="text-green-500 dark:text-green-400 text-sm drop-shadow-sm font-medium">Frontend Developer</p>
         </div>
@@ -166,7 +166,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-8 h-8 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
+              className={`w-8 h-8 flex items-center justify-center rounded-3xl border border-gray-300 dark:border-gray-600 bg-white/98 dark:bg-gray-900/98 md:bg-white/90 md:dark:bg-gray-900/90 backdrop-blur-sm ${social.color} hover:text-green-500 hover:border-green-500 transition-all duration-300 shadow-md`}
               aria-label={social.name}
             >
               <div className="w-4 h-4">{social.icon}</div>
@@ -175,7 +175,7 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
         </div>
 
         {/* Contact Information */}
-        <div className="mb-4 space-y-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3">
+        <div className="mb-4 space-y-2 bg-white/95 dark:bg-gray-900/95 md:bg-white/80 md:dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-3 shadow-md">
           <h3 className="text-center text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2 drop-shadow-sm">Contact</h3>
           {contactInfo.map((contact, index) => (
             <a

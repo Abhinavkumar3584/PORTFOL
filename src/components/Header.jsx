@@ -147,7 +147,7 @@ const Header = () => {
       </div>
       
       {/* Introduction Text */}
-      <div className="text-gray-800 dark:text-white mb-6 md:mb-10 max-w-3xl mx-auto relative z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-4">
+      <div className="text-gray-800 dark:text-white mb-6 md:mb-10 max-w-3xl mx-auto relative z-20 bg-white/95 dark:bg-gray-900/95 md:bg-white/80 md:dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg mobile-bg-fix">
         <h1 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 flex flex-wrap items-center">
           <span className="mr-2 animate-waving-hand">👋</span>
           Hi, I'm <span className="ml-2 text-green-500 dark:text-green-400 animated-line">Abhinav Kumar</span>
@@ -161,7 +161,7 @@ const Header = () => {
       </div>
       
       {/* INTERESTS Heading */}
-      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 inline-block border-b-2 border-green-500 dark:border-green-400 pb-1 relative z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg px-3 py-1">INTERESTS</h2>
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 inline-block border-b-2 border-green-500 dark:border-green-400 pb-1 relative z-20 bg-white/95 dark:bg-gray-900/95 md:bg-white/80 md:dark:bg-gray-900/80 backdrop-blur-sm rounded-lg px-3 py-1 shadow-md mobile-bg-fix">INTERESTS</h2>
       
       {/* Expertise Areas with Different Colors */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-3 relative z-20">
@@ -173,7 +173,7 @@ const Header = () => {
           return (
             <div 
               key={index} 
-              className={`border-2 ${borderColorClass} rounded-3xl p-2 md:p-3 flex flex-col items-center text-center bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+              className={`border-2 ${borderColorClass} rounded-3xl p-2 md:p-3 flex flex-col items-center text-center bg-white/95 dark:bg-gray-900/95 md:bg-white/90 md:dark:bg-gray-900/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 mobile-bg-fix`}
             >
               <div className={`${item.color} drop-shadow-sm`}>
                 {item.icon}
@@ -186,7 +186,7 @@ const Header = () => {
         })}
       </div>
       
-      {/* CSS for Waving Animation */}
+      {/* CSS for Waving Animation and Mobile Fixes */}
   <style>{`
         @keyframes waving {
           0% { transform: rotate(0deg); }
@@ -202,6 +202,16 @@ const Header = () => {
           animation: waving 2s infinite;
           transform-origin: 70% 70%;
           display: inline-block;
+        }
+        
+        /* Mobile background fixes */
+        @media (max-width: 768px) {
+          .mobile-bg-fix {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+          }
+          .dark .mobile-bg-fix {
+            background-color: rgba(17, 24, 39, 0.98) !important;
+          }
         }
       `}</style>
     </div>
