@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import profileImage from '../assets/images/abhi.jpg';
 
-const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
+const Sidebar = ({ showPdfModal, setShowPdfModal, showImagePopup, setShowImagePopup }) => {
   const { darkMode } = useContext(ThemeContext);
 
   const socialLinks = [
@@ -78,7 +78,10 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
       <div className="flex md:hidden items-center relative z-10">
         {/* Left side: Profile Image */}
         <div className="flex-shrink-0 mr-2">
-          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
+          <div 
+            className="w-32 h-32 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1 cursor-pointer transform transition-transform duration-300 hover:scale-105"
+            onClick={() => setShowImagePopup(true)}
+          >
             <img 
               src={profileImage} 
               alt="Abhinav Kumar" 
@@ -133,7 +136,10 @@ const Sidebar = ({ showPdfModal, setShowPdfModal }) => {
       <div className="hidden md:block relative z-10">
         {/* Profile Image */}
         <div className="flex justify-center mb-4">          
-          <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1">
+          <div 
+            className="w-48 h-48 rounded-full overflow-hidden border-2 border-green-500 dark:border-green-400 p-1 cursor-pointer transform transition-transform duration-300 hover:scale-105"
+            onClick={() => setShowImagePopup(true)}
+          >
             <img 
               src={profileImage} 
               alt="Abhinav Kumar" 
@@ -269,14 +275,100 @@ const PdfModal = ({ showPdfModal, setShowPdfModal }) => {
   );
 };
 
+// Image Popup Component - Beautiful circular animated popup
+const ImagePopup = ({ showImagePopup, setShowImagePopup }) => {
+  if (!showImagePopup) return null;
+
+  return createPortal(
+    <div 
+      className={`fixed inset-0 bg-black transition-all duration-500 ease-out ${
+        showImagePopup ? 'bg-opacity-80' : 'bg-opacity-0'
+      } flex items-center justify-center p-4`} 
+      style={{ zIndex: 999999 }}
+      onClick={() => setShowImagePopup(false)}
+    >
+      {/* Animated circular image container */}
+      <div 
+        className={`relative transform transition-all duration-700 ease-out ${
+          showImagePopup 
+            ? 'scale-100 opacity-100 rotate-0' 
+            : 'scale-0 opacity-0 rotate-180'
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Outer glowing ring */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 p-1 animate-pulse">
+          <div className="w-full h-full bg-black rounded-full"></div>
+        </div>
+        
+        {/* Main image container */}
+        <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+          <img 
+            src={profileImage} 
+            alt="Abhinav Kumar" 
+            className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+          />
+          
+          {/* Gradient overlay for better text visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          
+          {/* Name overlay at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 text-center p-6">
+            <h3 className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
+              Abhinav Kumar
+            </h3>
+            <p className="text-green-400 text-lg md:text-xl font-medium drop-shadow-lg">
+              Frontend Developer
+            </p>
+          </div>
+        </div>
+        
+        {/* Close button */}
+        <button
+          onClick={() => setShowImagePopup(false)}
+          className="absolute -top-4 -right-4 w-12 h-12 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        {/* Floating particles animation */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className={`absolute w-2 h-2 bg-white rounded-full opacity-60 animate-ping`}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
 // Main Sidebar Component Export
 const SidebarWithModal = () => {
   const [showPdfModal, setShowPdfModal] = useState(false);
+  const [showImagePopup, setShowImagePopup] = useState(false);
 
   return (
     <>
-      <Sidebar showPdfModal={showPdfModal} setShowPdfModal={setShowPdfModal} />
+      <Sidebar 
+        showPdfModal={showPdfModal} 
+        setShowPdfModal={setShowPdfModal}
+        showImagePopup={showImagePopup}
+        setShowImagePopup={setShowImagePopup}
+      />
       <PdfModal showPdfModal={showPdfModal} setShowPdfModal={setShowPdfModal} />
+      <ImagePopup showImagePopup={showImagePopup} setShowImagePopup={setShowImagePopup} />
     </>
   );
 };
