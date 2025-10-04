@@ -2,30 +2,36 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 // Import gallery images
 import img1 from '../assets/images/gallery/IMG-20191215-WA0008.jpg';
-import img2 from '../assets/images/gallery/PicsArt_10-08-07.16.44.jpg';
 import img3 from '../assets/images/gallery/rahul_abhinav.jpg';
 import img4 from '../assets/images/gallery/rmsa.jpg';
 import img5 from '../assets/images/gallery/rmsa1.jpg';
 import img6 from '../assets/images/gallery/rmsa2.jpg';
 import img7 from '../assets/images/gallery/NCC.jpg';
+import img8 from '../assets/images/gallery/bipin-rawat.jpeg';
+import img9 from '../assets/images/gallery/grassrootsleadershipcamp.jpeg';
+import img10 from '../assets/images/gallery/sewa-mandal.jpeg';
 
 // Gallery images with appropriate heights for the grid
 const images = [
-  { src: img1, alt: 'Gallery Image 1', className: 'object-cover h-48 w-full' },
-  { src: img2, alt: 'Gallery Image 2', className: 'object-cover h-40 w-full' },
-  { src: img3, alt: 'Rahul Abhinav', className: 'object-cover h-52 w-full' },
-  { src: img4, alt: 'RMSA Image', className: 'object-cover h-44 w-full' },
-  { src: img5, alt: 'RMSA Image 1', className: 'object-cover h-36 w-full' },
-  { src: img6, alt: 'RMSA Image 2', className: 'object-cover h-48 w-full' },
-  { src: img7, alt: 'NCC Image', className: 'object-cover h-52 w-full' },
+  { src: img1, alt: 'Gallery Image 1', className: 'object-cover w-full h-48' },
+  { src: img3, alt: 'Rahul Abhinav', className: 'object-cover w-full h-52' },
+  { src: img4, alt: 'RMSA Image', className: 'object-cover w-full h-44' },
+  { src: img5, alt: 'RMSA Image 1', className: 'object-cover w-full h-40' },
+  { src: img6, alt: 'RMSA Image 2', className: 'object-cover w-full h-48' },
+  { src: img7, alt: 'NCC Image', className: 'object-cover w-full h-52' },
+  { src: img8, alt: 'Bipin Rawat', className: 'object-cover w-full h-44' },
+  { src: img9, alt: 'Grassroots Leadership Camp', className: 'object-cover w-full h-48' },
+  { src: img10, alt: 'Sewa Mandal', className: 'object-cover w-full h-40' },
   // Repeated to have enough images for a good scrolling effect
-  { src: img1, alt: 'Gallery Image 1', className: 'object-cover h-40 w-full' },
-  { src: img2, alt: 'Gallery Image 2', className: 'object-cover h-52 w-full' },
-  { src: img3, alt: 'Rahul Abhinav', className: 'object-cover h-44 w-full' },
-  { src: img4, alt: 'RMSA Image', className: 'object-cover h-36 w-full' },
-  { src: img5, alt: 'RMSA Image 1', className: 'object-cover h-48 w-full' },
-  { src: img6, alt: 'RMSA Image 2', className: 'object-cover h-40 w-full' },
-  { src: img7, alt: 'NCC Image', className: 'object-cover h-52 w-full' },
+  { src: img1, alt: 'Gallery Image 1', className: 'object-cover w-full h-40' },
+  { src: img3, alt: 'Rahul Abhinav', className: 'object-cover w-full h-44' },
+  { src: img4, alt: 'RMSA Image', className: 'object-cover w-full h-48' },
+  { src: img5, alt: 'RMSA Image 1', className: 'object-cover w-full h-52' },
+  { src: img6, alt: 'RMSA Image 2', className: 'object-cover w-full h-44' },
+  { src: img7, alt: 'NCC Image', className: 'object-cover w-full h-40' },
+  { src: img8, alt: 'Bipin Rawat', className: 'object-cover w-full h-48' },
+  { src: img9, alt: 'Grassroots Leadership Camp', className: 'object-cover w-full h-52' },
+  { src: img10, alt: 'Sewa Mandal', className: 'object-cover w-full h-44' },
 ];
 
 const GallerySection = () => {
